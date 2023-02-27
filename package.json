@@ -1,0 +1,9 @@
+{
+  "devDependencies": {
+    "tailwindcss": "^3.2.7"
+  },
+  "dependencies": {
+    "daisyui": "^2.51.2",
+    "react-router-dom": "^6.8.1"
+  }
+}
