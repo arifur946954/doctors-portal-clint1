@@ -4,7 +4,8 @@ import MakeButton from '../../Shared/MakeButton';
 import './Contract.css'
 const Contract = () => {
     return (
-      <div style={
+  <div className=''>
+        <div style={
         {background:`url(${appoinment})`}
       }>
           <div>
@@ -18,10 +19,14 @@ const Contract = () => {
      
             <textarea className=" inpt textarea textarea-success " placeholder="Bio"></textarea>
  
-           <MakeButton className="inpt">Submit</MakeButton>
+           <div className='card justify-center mb-3'>
+           <input type="submit" value="Submit" className="mt-3 btn btn-accent text-white  " />
+           {/* <MakeButton className="">Submit</MakeButton> */}
+           </div>
      
         </div>
       </div>
+  </div>
     );
 };
 

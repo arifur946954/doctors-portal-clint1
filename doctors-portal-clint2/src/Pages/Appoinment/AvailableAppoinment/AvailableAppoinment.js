@@ -11,7 +11,7 @@ const AvailableAppoinment = ({setSelectedDate,selectedDate}) => {
     .then(res=>res.json())
     .then(data=>setApoinmentOption(data))
    },[])
-   let footers= <p>Please pick a day.</p>; ;
+   let footers= <p>Please pick a day.</p>;
     if (selectedDate) {
      footers = <p>Available appoinment is: {format(selectedDate, 'PP')}.</p>;
     }
