@@ -4,8 +4,8 @@ const MakeButton = ({children}) => {
     return (
         <div>
            <button className="btn btn-primary bg-gradient-to-r from-cyan-500
-            to-blue-500 text-white">Get Started</button> 
-            {children}
+            to-blue-500 text-white">{children}</button> 
+            
         </div>
     );
 };

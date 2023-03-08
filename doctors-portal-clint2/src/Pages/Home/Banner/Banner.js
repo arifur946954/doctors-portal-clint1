@@ -3,6 +3,7 @@ import chair from '../../../images/assets/pic/chair.png'
 import bg from '../../../images/assets/pic/bg.png'
 import MakeButton from '../../Shared/MakeButton';
 
+
 const Banner = () => {
 
     return (
@@ -15,7 +16,8 @@ const Banner = () => {
       <p className="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut
        assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id 
        nisi.</p>
-     <MakeButton></MakeButton>
+     <MakeButton>Get Started</MakeButton>
+
     </div>
   </div>
 </div>

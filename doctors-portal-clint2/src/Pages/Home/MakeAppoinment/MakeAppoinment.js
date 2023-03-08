@@ -15,7 +15,7 @@ const MakeAppoinment = () => {
     <div ml-12>
       <h1 className="text-3xl text-white font-bold">Box Office News!</h1>
       <p className="text-white py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
-      <MakeButton></MakeButton>
+      <MakeButton>Get Started</MakeButton>
     </div>
   </div>
 </div> 

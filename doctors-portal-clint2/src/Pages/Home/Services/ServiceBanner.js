@@ -16,7 +16,7 @@ const ServiceBanner = () => {
        assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae 
        et a id nisi.</p>
 <div className='bottom-0'>
-<MakeButton></MakeButton>
+<MakeButton>Get Startted</MakeButton>
 </div>
     </div>
   </div>
