@@ -1,16 +1,33 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import MakeButton from '../Shared/MakeButton';
 import { useForm } from "react-hook-form";
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../Context/Authprovider';
 
 
 
 const Login = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
     const { register,formState: { errors }, handleSubmit } = useForm();
+    const [loginError,setLoginError]= useState('');
+   const {signIn }= useContext(AuthContext);
    
     // const [data, setData] = useState("");
     const handleLogin=data=>{
+      setLoginError('');
       console.log(data);
+       signIn(data.email,data.password)
+       .then(result=>{
+        const user=result.user;
+        console.log(user);
+        navigate(from, { replace: true });
+       })
+       .catch(error=>{
+        console.log(error);
+        setLoginError(error);
+       });
     }
     return (
         <div className='h-[600px] flex justify-center items-center '>
@@ -38,6 +55,11 @@ const Login = () => {
      })}  className="input input-bordered w-full max-w-xs" />
     {errors.password && <p className='text-red-600' role="alert">{errors.password?.message}</p>}
     <label className="label"> <span className="label-text">Forgot Passdword</span></label>
+    <div>
+      {
+        loginError && <p className='text-red-600'>Email or password is incorrect</p>
+      }
+    </div>
    </div>
 
 {/* daisi end from here */}

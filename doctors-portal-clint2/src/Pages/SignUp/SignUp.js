@@ -1,12 +1,33 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { toast } from 'react-hot-toast';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../Context/Authprovider';
 
 const SignUp = () => {
     const { register,formState: { errors }, handleSubmit } = useForm();
+    const {updateUser,createUser }=useContext(AuthContext);
+    const [signupError,setSignupError]=useState();
     // const [data, setData] = useState("");
 const handleSignup=data=>{
     console.log(data);
+    setSignupError('');
+    createUser(data.email,data.password)
+    .then(result=>{
+      const user=result.user;
+      console.log(user);
+      toast("user created successfully");
+      const userInfo={
+        displayName:data.name
+      }
+      updateUser(userInfo)
+      .then(()=>{})
+      .catch(error=>console.log(error));
+    })
+    .catch(error=>{
+      console.log(error)
+      setSignupError(error.message);
+    });
 }
 
     return (
@@ -51,13 +72,15 @@ const handleSignup=data=>{
 
 </div> */}
 
-
+{
+  signupError && <p className='text-red-600'>{signupError}</p>
+}
 
 <button className="mt-7 btn btn-accent w-full text-white">SignUp</button>
     </form>
     <p>Allready have an account <Link className='text-accent' to="/login">Login Please</Link></p>
     <div className="divider">OR</div>
-    <button className="btn btn-outline w-full ">Button</button>
+    <button className="btn btn-outline w-full ">SignUp with Google </button>
     </div>
         </div>
     );
