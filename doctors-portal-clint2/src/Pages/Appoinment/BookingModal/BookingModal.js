@@ -1,8 +1,11 @@
 import { format } from 'date-fns';
-import React from 'react';
+import React, { useContext } from 'react';
+import { toast } from 'react-hot-toast';
+import { AuthContext } from '../../../Context/Authprovider';
 
 const BookingModal = ({tretment,selectedDate,setTreatment}) => {
     const {slots,name}=tretment;
+    const {user}=useContext(AuthContext);
    let date = format(selectedDate, 'PP')
 
    const handleSubmit=event=>{
@@ -15,18 +18,34 @@ const BookingModal = ({tretment,selectedDate,setTreatment}) => {
     const phone=form.phone.value;
 
     const booking={
-        name,
+      
+       date,
         tretment:name,//here tretment = tretment.name;
-        email,
-        slot,
-        date,
-        phone,
+         email,
+         slot,
+         name,
+         phone,
         
     }
+    console.log(booking);
+
+    //send data to the server
+    fetch('http://localhost:5000/bookings',{
+      method:'POST',
+      headers:{'content-type':'/application/json'},
+      body:JSON.stringify(booking)
+    })
+    .then(res=>res.json())
+    .then(data=>{console.log(data);
+     if(data.acknowledged){
+      setTreatment(null);
+      toast.success("successfully insert atata")
+     }
+    })
    
 
     console.log(booking);
-    setTreatment(null);
+   
  
 
     
@@ -51,8 +70,8 @@ const BookingModal = ({tretment,selectedDate,setTreatment}) => {
 </select>
 {/* slot option end from here */}
 
-   <input name="name" type="name" placeholder="Type here" className="input input-bordered" />
-   <input name="email" type="emil" placeholder="Type here" className="input input-bordered" />
+   <input name="name" type="name" defaultValue={user ?.displayName} disabled className="input input-bordered" />
+   <input name="email" type="emil" defaultValue={user ?.email} disabled className="input input-bordered" />
    <input name="phone" type="phone" placeholder="Type here" className="input input-bordered" />
    <input name="submit" type="submit" placeholder="Type here" className="text-white btn btn-accent" />
 

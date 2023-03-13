@@ -24,7 +24,7 @@ const logOut=()=>{
 }
 //for update user
 const updateUser=(userInfo)=>{
-    return updateProfile(user,userInfo)
+    return updateProfile(auth.currentUser,userInfo)
 }
 //for manage user
 useEffect(()=>{

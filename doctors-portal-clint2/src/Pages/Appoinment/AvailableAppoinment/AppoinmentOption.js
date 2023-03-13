@@ -32,3 +32,7 @@ const AppoinmentOption = ({ appoinment, setTreatment}) => {
 };
 
 export default AppoinmentOption;
+
+
+
+
