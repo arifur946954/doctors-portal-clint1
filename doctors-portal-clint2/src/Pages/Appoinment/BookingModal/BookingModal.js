@@ -12,6 +12,7 @@ const BookingModal = ({tretment,selectedDate,setTreatment}) => {
     event.preventDefault();
     const form= event.target;
     const name=form.name.value;
+    const dises=form.dises.value;
     const email=form.email.value;
     const slot=form.slot.value;
     const date=form.date.value;
@@ -20,10 +21,10 @@ const BookingModal = ({tretment,selectedDate,setTreatment}) => {
     const booking={
       
        date,
-        tretment:name,//here tretment = tretment.name;
+     Tname:tretment.name,//here tretment = tretment.name;
          email,
          slot,
-         name,
+        name,
          phone,
         
     }
@@ -57,7 +58,7 @@ const BookingModal = ({tretment,selectedDate,setTreatment}) => {
 <div className="modal">
   <div className="modal-box relative">
     <label htmlFor="booking-modal" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
-    <h3 className="text-lg font-bold">{tretment.name}</h3>
+    <h3 name="dises" className="text-lg font-bold">{name}</h3>
    <form onSubmit={handleSubmit} className='grid grid-cols-1 gap-3 mt-8'>
    <input name="date" type="text"value={date} disabled    className="input input-bordered" />
 {/* slot option start from here */}
