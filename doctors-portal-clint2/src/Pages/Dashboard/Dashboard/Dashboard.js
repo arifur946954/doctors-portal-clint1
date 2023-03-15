@@ -9,13 +9,16 @@ const handleSubmit=event=>{
     const email=form.email.value;
     const phone=form.phone.value;
 const users={name,email,phone}
+console.log(users);
 
 
 
 fetch('http://localhost:5000/user',{
-      method:'POST',
-      headers:{'content-type':'/application/json'},
-      body:JSON.stringify(users)
+    method: "POST",
+    headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(users),
     })
     .then(res=>res.json())
     .then(data=>{console.log(data);
@@ -25,6 +28,9 @@ fetch('http://localhost:5000/user',{
      }
     
     })
+    .catch((error) => {
+        console.error("Error:", error);
+})
    
 
 

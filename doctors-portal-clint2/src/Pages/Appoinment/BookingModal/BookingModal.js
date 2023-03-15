@@ -1,3 +1,4 @@
+
 import { format } from 'date-fns';
 import React, { useContext } from 'react';
 import { toast } from 'react-hot-toast';
@@ -12,28 +13,26 @@ const BookingModal = ({tretment,selectedDate,setTreatment}) => {
     event.preventDefault();
     const form= event.target;
     const name=form.name.value;
-    const dises=form.dises.value;
     const email=form.email.value;
     const slot=form.slot.value;
     const date=form.date.value;
     const phone=form.phone.value;
 
     const booking={
-      
-       date,
-     Tname:tretment.name,//here tretment = tretment.name;
-         email,
-         slot,
+         date,
+       Tname:tretment.name,//here tretment = tretment.name;
+        email,
+        slot,
         name,
-         phone,
+        phone
         
     }
     console.log(booking);
 
-    //send data to the server
+    // send data to the server
     fetch('http://localhost:5000/bookings',{
       method:'POST',
-      headers:{'content-type':'/application/json'},
+      headers:{'content-type':'application/json'},
       body:JSON.stringify(booking)
     })
     .then(res=>res.json())
@@ -84,3 +83,16 @@ const BookingModal = ({tretment,selectedDate,setTreatment}) => {
 };
 
 export default BookingModal;
+
+
+
+
+
+
+
+
+
+
+
+
+
