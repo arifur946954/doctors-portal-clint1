@@ -4,7 +4,7 @@ import React, { useContext } from 'react';
 import { toast } from 'react-hot-toast';
 import { AuthContext } from '../../../Context/Authprovider';
 
-const BookingModal = ({tretment,selectedDate,setTreatment}) => {
+const BookingModal = ({tretment,selectedDate,setTreatment,refetch}) => {
     const {slots,name}=tretment;
     const {user}=useContext(AuthContext);
    let date = format(selectedDate, 'PP')
@@ -15,11 +15,11 @@ const BookingModal = ({tretment,selectedDate,setTreatment}) => {
     const name=form.name.value;
     const email=form.email.value;
     const slot=form.slot.value;
-    const date=form.date.value;
+    // const appoinmentDate=form.date.value;
     const phone=form.phone.value;
 
     const booking={
-         date,
+      appoinmentDate:date,
        Tname:tretment.name,//here tretment = tretment.name;
         email,
         slot,
@@ -39,7 +39,11 @@ const BookingModal = ({tretment,selectedDate,setTreatment}) => {
     .then(data=>{console.log(data);
      if(data.acknowledged){
       setTreatment(null);
-      toast.success("successfully insert atata")
+      toast.success("successfully Booked")
+      refetch()
+     }
+     else{
+      toast.error(data.message)
      }
     })
    
