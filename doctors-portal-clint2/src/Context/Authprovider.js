@@ -6,6 +6,7 @@ const auth = getAuth(app);
 
 const Authprovider = ({children}) => {
     const [user,setUser]=useState(null);
+  
     //for dashboard loading information
     const [loading,setLoding]=useState(true);
     //for create user 
@@ -30,6 +31,7 @@ const updateUser=(userInfo)=>{
 useEffect(()=>{
   const unsubCriber=  onAuthStateChanged(auth, (currentUser) => {
         setUser(currentUser);
+       
         setLoding(false);
     })
     return()=> unsubCriber()
