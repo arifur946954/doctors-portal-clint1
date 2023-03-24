@@ -9,8 +9,14 @@ const MyAppoinment = () => {
   const {data:bookings=[]}=useQuery({
     queryKey:['bookings',user?.email],
     queryFn:async()=>{
-        const res=await fetch(url);
-        const data=await res.json();
+        const res=await fetch(url,{
+            headers:{
+                authorization:`bearer ${localStorage.getItem('accessToken')}`
+            }
+           
+        });
+       
+        const data=await res.json(); 
         return data;
     }
   })
@@ -30,8 +36,8 @@ const MyAppoinment = () => {
         <th>id</th>
         <th>Name</th>
         <th>Dises Name</th>
-        <th>Email</th>
-        <th>Phone</th>
+        <th>Date</th>
+        <th>Time</th>
       </tr>
     </thead>
 
@@ -40,11 +46,12 @@ const MyAppoinment = () => {
    {
     bookings.map((booking,i)=><tr>
         
-            <th>{i}</th>
+            <th>{i+1}</th>
         <th>{booking.name}</th>
         <th>{booking.Tname}</th>
-        <th>{booking.email}</th>
-        <th>{booking.phone}</th> 
+        <th>{booking.appoinmentDate
+}</th>
+        <th>{booking.slot}</th> 
         </tr>
     )
    }
